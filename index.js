@@ -25,7 +25,10 @@ console.log(test.has('moon'))
 console.log(test.has('apples'))
 console.log(test.remove('apple'))
 console.log(test.remove('a'))
+console.log(test.remove('kite'))
+console.log(test.length())
+console.log(test.clear())
 
 
 console.log(test.buckets)
-console.log(test.length())
+// console.log(test.length())

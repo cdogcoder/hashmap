@@ -134,9 +134,11 @@ export default function createHashMap() {
         return count;
     }
     const clear = () => {
-        for (let i = 0; i < buckets.length; i++) {
+        capacity = 16;
+        for (let i = 0; i < capacity; i++) {
             buckets[i] = null;
         }
+        buckets.length = capacity
     }
 
     const keys = () => {
