@@ -151,7 +151,9 @@ export default class LinkedList {
         else if (index < 0) console.error("Negative index provided");
         else {
             let tmp = this.head;
-            if (count == index) {
+            if (count == index && this.size() == 1) {
+                this.head = null;
+            } else if (count == index && this.size() > 1) { 
                 this.head = this.at(++count);
             } else {
                 while (tmp.next) {

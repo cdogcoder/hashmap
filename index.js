@@ -16,9 +16,15 @@ test.set('lion', 'golden')
 test.set('lion', 'black');
 test.set('kite', 'blue');
 test.set('apple', 'green');
-test.set('jacket')
+test.set('jacket', 's')
 test.set('moon', 'silver')
 test.set('moon', 'black')
+console.log(test.get('jacket'))
+console.log(test.get('kitten'))
+console.log(test.has('moon'))
+console.log(test.has('apples'))
+console.log(test.remove('apple'))
+console.log(test.remove('a'))
 
 
 console.log(test.buckets)

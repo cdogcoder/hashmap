@@ -123,6 +123,7 @@ export default function createHashMap() {
             if (bucket) {
                 let tmp = bucket.head;
                 count++;
+                
                 while (tmp.next) {
                     tmp = tmp.next;
                     count++;
