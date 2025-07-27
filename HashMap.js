@@ -3,7 +3,10 @@ import LinkedList from "./LinkedList.js"
 function createHashMap() {
     let capacity = 16;
     const loadFactor = .75;
-    let buckets = new Array(capacity).fill(null);
+    let buckets = [];
+    for (let i = 0; i < capacity; i++) {
+        buckets[i] = null;
+    }
     const hash = (key) => {
         let hashCode = 0;
         const primeNumber = 31;
@@ -13,6 +16,10 @@ function createHashMap() {
         return hashCode;
     } 
     const set = (key, value) => {
+        const hmlength = length();
+        if (hmlength >= capacity*loadFactor) {
+            rehash()
+        }
         const hashedKey = hash(key);
         const bucket = buckets[hashedKey];
         const pair = {}
@@ -148,6 +155,16 @@ function createHashMap() {
         return arr;
     }
 
+    const rehash = () => {
+        capacity *= 2;
+        let hmentries = entries();
+        for (let i = 0; i < capacity; i++) {
+            buckets[i] = null;
+        }
+        for (let entry of hmentries) {
+            set(entry[0], entry[1])
+        }
+    }
     return {hash, set, has, remove, length, clear, keys, values, entries, buckets}
 }
 
@@ -158,13 +175,19 @@ h.set("F", "h");
 h.set("h", "");
 h.set("Frd", "hi")
 h.set("dreF", "hallo");
-console.log(h.has("h"));
-console.log(h.remove("Frd"))
-console.log(h.length())
-h.clear();
-console.log(h.length());
-console.log(h.keys())
-console.log(h.values())
-console.log(h.entries())
+h.set("Fre", "Weasley");
+h.set("j", "h");
+h.set("u", " ");
+h.set("jdskaf", "hi");
+h.set("w", "hallo");
+h.set("jdskf", "hi")
+h.set("a", "hallo");
+// h.set("b", "who")
+
+
+// console.log(h.length());
+// console.log(h.keys())
+// console.log(h.values())
+// console.log(h.entries())
 console.log(h.buckets)
 
