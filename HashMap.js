@@ -39,7 +39,28 @@ function createHashMap() {
             buckets[hashedKey].append(pair)
         }
     }
-    return {hash, set, buckets}
+
+    const has = (key) => {
+        const hashedKey = hash(key);
+        const bucket = buckets[hashedKey];
+        if (bucket) {
+            let tmp = bucket.head;
+            let tmpKey = Object.keys(tmp.data)[0];
+            if (key == tmpKey) {
+                return true;
+            } else {
+                while (tmp.next) {
+                    tmp = tmp.next;
+                    tmpKey = Object.keys(tmp.data)[0];
+                    if (key == tmpKey) {
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+    }
+    return {hash, set, has, buckets}
 }
 
 const h = createHashMap();
@@ -49,6 +70,7 @@ h.set("F", "h");
 h.set("h", "");
 h.set("Frd", "hi")
 h.set("dreF", "hallo");
+console.log(h.has("h"))
 
 console.log(h.buckets)
 
