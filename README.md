@@ -1,1 +1,3 @@
 # hashmap
+
+Hey everyone! This is my eighth project now for the JavaScript course for TOP. Today, I will be implementing a hashmap from scratch using what I know of either JavaScript classes or factory functions. There's not much else to say, so please look through the code if you are curious! As always, all media used that is not my own will be linked here, please go show all the creators their deserved love and support! With that said, thank you for viewing this repo and I hope you enjoyed this project!
