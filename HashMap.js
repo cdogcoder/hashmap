@@ -100,6 +100,7 @@ export default function createHashMap() {
             let tmpKey = Object.keys(tmp.data)[0];
             if (key == tmpKey) {
                 bucket.removeAt(count);
+                if (bucket.size() == 0) buckets[hashedKey] = null;
                 return true;
             } else {
                 while (tmp.next) {
@@ -108,6 +109,7 @@ export default function createHashMap() {
                     tmpKey = Object.keys(tmp.data)[0];
                     if (key == tmpKey) {
                         bucket.removeAt(count);
+                        if (bucket.size() == 0) buckets[hashedKey] = null;
                         return true;
                     }
                 }
@@ -123,7 +125,6 @@ export default function createHashMap() {
             if (bucket) {
                 let tmp = bucket.head;
                 count++;
-                
                 while (tmp.next) {
                     tmp = tmp.next;
                     count++;
