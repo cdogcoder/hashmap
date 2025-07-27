@@ -101,7 +101,7 @@ export default function createHashMap() {
             if (key == tmpKey) {
                 bucket.removeAt(count);
                 if (bucket.size() == 0) buckets[hashedKey] = null;
-                if (length() <= (capacity/2)*loadFactor) rehash(false)
+                if (length() == (capacity/2)*loadFactor) rehash(false)
                 return true;
             } else {
                 while (tmp.next) {

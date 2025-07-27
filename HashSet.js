@@ -172,7 +172,7 @@ export default function createHashSet() {
                 buckets[i] = null;
             }
             for (let entry of hmentries) {
-                set(entry[0], entry[1])
+                set(entry)
             }
         } else {
             capacity /= 2;
@@ -181,7 +181,7 @@ export default function createHashSet() {
                 buckets[i] = null;
             }
             for (let entry of hmentries) {
-                set(entry[0], entry[1])
+                set(entry)
             }
         }
     }
