@@ -1,6 +1,6 @@
 import LinkedList from "./LinkedList.js"
 
-function createHashMap() {
+export default function createHashMap() {
     let capacity = 16;
     const loadFactor = .75;
     let buckets = [];
@@ -168,26 +168,4 @@ function createHashMap() {
     return {hash, set, has, remove, length, clear, keys, values, entries, buckets}
 }
 
-const h = createHashMap();
-
-h.set("Fred", "Weasley");
-h.set("F", "h");
-h.set("h", "");
-h.set("Frd", "hi")
-h.set("dreF", "hallo");
-h.set("Fre", "Weasley");
-h.set("j", "h");
-h.set("u", " ");
-h.set("jdskaf", "hi");
-h.set("w", "hallo");
-h.set("jdskf", "hi")
-h.set("a", "hallo");
-// h.set("b", "who")
-
-
-// console.log(h.length());
-// console.log(h.keys())
-// console.log(h.values())
-// console.log(h.entries())
-console.log(h.buckets)
 
