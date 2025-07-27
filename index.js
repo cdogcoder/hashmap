@@ -16,19 +16,9 @@ test.set('lion', 'golden')
 test.set('lion', 'black');
 test.set('kite', 'blue');
 test.set('apple', 'green');
-test.set('cobra', '')
-test.set('cobr', '')
-test.set('cob', '')
-test.set('co', '')
-test.set('appl', 'green');
-test.set('app', 'green');
-test.set('ap', 'green');
-test.set('a', 'green');
-test.set('ice crea', 'white')
-test.set('ice cre', 'white')
-test.set('ice cr', 'white')
-test.set('ice c', 'white')
-test.set('ice ', 'pink')
+test.set('jacket')
+test.set('moon', 'silver')
+test.set('moon', 'black')
 
 
 console.log(test.buckets)
