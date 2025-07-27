@@ -120,7 +120,23 @@ function createHashMap() {
         }
         return arr;
     }
-    return {hash, set, has, remove, length, clear, keys}
+
+    const values = () => {
+        let arr = [];
+        for (const bucket of buckets) {
+            if (bucket) {
+                let tmp = bucket.head;
+                arr.push(Object.values(tmp.data)[0]);
+                while (tmp.next) {
+                    tmp = tmp.next;
+                    arr.push(Object.values(tmp.data)[0]);
+                }
+            }
+        }
+        return arr;
+    }
+
+    return {hash, set, has, remove, length, clear, keys, values}
     
 }
 
@@ -137,4 +153,5 @@ console.log(h.length())
 // h.clear();
 console.log(h.length());
 console.log(h.keys())
+console.log(h.values())
 
