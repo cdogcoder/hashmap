@@ -43,7 +43,7 @@ export default function createHashMap() {
         }
         const hmlength = length();
         if (hmlength > capacity*loadFactor) {
-            rehash()
+            rehash(true)
         }
     }
 
@@ -101,6 +101,7 @@ export default function createHashMap() {
             if (key == tmpKey) {
                 bucket.removeAt(count);
                 if (bucket.size() == 0) buckets[hashedKey] = null;
+                if (length() <= (capacity/2)*loadFactor) rehash(false)
                 return true;
             } else {
                 while (tmp.next) {
@@ -181,14 +182,25 @@ export default function createHashMap() {
         return arr;
     }
 
-    const rehash = () => {
-        capacity *= 2;
+    const rehash = (bool) => {
         let hmentries = entries();
-        for (let i = 0; i < capacity; i++) {
-            buckets[i] = null;
-        }
-        for (let entry of hmentries) {
-            set(entry[0], entry[1])
+        if (bool) {
+            capacity *= 2;
+            for (let i = 0; i < capacity; i++) {
+                buckets[i] = null;
+            }
+            for (let entry of hmentries) {
+                set(entry[0], entry[1])
+            }
+        } else {
+            capacity /= 2;
+            buckets.length = capacity;
+            for (let i = 0; i < capacity; i++) {
+                buckets[i] = null;
+            }
+            for (let entry of hmentries) {
+                set(entry[0], entry[1])
+            }
         }
     }
     return {hash, set, get, has, remove, length, clear, keys, values, entries, buckets}
