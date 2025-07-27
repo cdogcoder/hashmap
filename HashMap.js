@@ -136,7 +136,17 @@ function createHashMap() {
         return arr;
     }
 
-    return {hash, set, has, remove, length, clear, keys, values}
+    const entries = () => {
+        let arr = [];
+        let hmkeys = keys();
+        let hmvalues = values();
+        for (let i = 0; i < hmkeys.length; i++) {
+            arr.push([hmkeys[i], hmvalues[i]]);
+        }
+        return arr;
+    }
+
+    return {hash, set, has, remove, length, clear, keys, values, entries}
     
 }
 
@@ -154,4 +164,5 @@ console.log(h.length())
 console.log(h.length());
 console.log(h.keys())
 console.log(h.values())
+console.log(h.entries())
 
