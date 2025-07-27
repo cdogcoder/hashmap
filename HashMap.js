@@ -3,7 +3,7 @@ import LinkedList from "./LinkedList.js"
 function createHashMap() {
     let capacity = 16;
     const loadFactor = .75;
-    let buckets = new Array(capacity);
+    let buckets = new Array(capacity).fill(null);
     const hash = (key) => {
         let hashCode = 0;
         const primeNumber = 31;
@@ -103,7 +103,9 @@ function createHashMap() {
         return count;
     }
     const clear = () => {
-        buckets = new Array(capacity);
+        for (let i = 0; i < buckets.length; i++) {
+            buckets[i] = null;
+        }
     }
 
     const keys = () => {
@@ -146,8 +148,7 @@ function createHashMap() {
         return arr;
     }
 
-    return {hash, set, has, remove, length, clear, keys, values, entries}
-    
+    return {hash, set, has, remove, length, clear, keys, values, entries, buckets}
 }
 
 const h = createHashMap();
@@ -160,9 +161,10 @@ h.set("dreF", "hallo");
 console.log(h.has("h"));
 console.log(h.remove("Frd"))
 console.log(h.length())
-// h.clear();
+h.clear();
 console.log(h.length());
 console.log(h.keys())
 console.log(h.values())
 console.log(h.entries())
+console.log(h.buckets)
 
