@@ -88,7 +88,22 @@ function createHashMap() {
         return false;
     }
 
-    return {hash, set, has, remove, buckets}
+    const length = () => {
+        let count = 0;
+        for (const bucket of buckets) {
+            if (bucket) {
+                let tmp = bucket.head;
+                count++;
+                while (tmp.next) {
+                    tmp = tmp.next;
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    return {hash, set, has, remove, length, buckets}
 }
 
 const h = createHashMap();
@@ -100,6 +115,7 @@ h.set("Frd", "hi")
 h.set("dreF", "hallo");
 console.log(h.has("h"));
 console.log(h.remove("Frd"))
+console.log(h.length())
 
 console.log(h.buckets)
 
