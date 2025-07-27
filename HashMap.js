@@ -62,7 +62,33 @@ function createHashMap() {
         return false;
     }
 
-    return {hash, set, has, buckets}
+    const remove = (key) => {
+        if (has(key)) {
+            let count = 0;
+            const hashedKey = hash(key);
+            const bucket = buckets[hashedKey];
+            let tmp = bucket.head;
+            let tmpKey = Object.keys(tmp.data)[0];
+            if (key == tmpKey) {
+                bucket.removeAt(count);
+                return true;
+            } else {
+                while (tmp.next) {
+                    tmp = tmp.next;
+                    count++;
+                    tmpKey = Object.keys(tmp.data)[0];
+                    if (key == tmpKey) {
+                        bucket.removeAt(count);
+                        return true;
+                    }
+                }
+                return false;
+            }
+        }
+        return false;
+    }
+
+    return {hash, set, has, remove, buckets}
 }
 
 const h = createHashMap();
@@ -72,7 +98,8 @@ h.set("F", "h");
 h.set("h", "");
 h.set("Frd", "hi")
 h.set("dreF", "hallo");
-console.log(h.has("h"))
+console.log(h.has("h"));
+console.log(h.remove("Frd"))
 
 console.log(h.buckets)
 
