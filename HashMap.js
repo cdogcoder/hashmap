@@ -1,4 +1,9 @@
+import LinkedList from "./LinkedList.js"
+
 function createHashMap() {
+    let capacity = 16;
+    const loadFactor = .75;
+    let buckets = new Array(capacity).fill(new LinkedList());
     const hash = (key) => {
         let hashCode = 0;
         const primeNumber = 31;
