@@ -16,7 +16,6 @@ export default function createHashMap() {
         return hashCode;
     } 
     const set = (key, value) => {
-        const hmlength = length();
         const hashedKey = hash(key);
         const bucket = buckets[hashedKey];
         const pair = {}
@@ -42,7 +41,8 @@ export default function createHashMap() {
             buckets[hashedKey] = new LinkedList();
             buckets[hashedKey].append(pair)
         }
-        if (hmlength >= capacity*loadFactor) {
+        const hmlength = length();
+        if (hmlength > capacity*loadFactor) {
             rehash()
         }
     }
