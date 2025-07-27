@@ -58,8 +58,10 @@ function createHashMap() {
                 }
                 return false;
             }
-        }
+        } 
+        return false;
     }
+
     return {hash, set, has, buckets}
 }
 
